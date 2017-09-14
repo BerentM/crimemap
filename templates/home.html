@@ -1,5 +1,7 @@
 <html>
+
 <body>
+
   <head>
     <title>Crime Map</title>
   </head>
@@ -8,10 +10,10 @@
   <form action="/add" method="POST">
     <input type="text" name="userinput">
     <input type="submit" value="Submit">
-    </form>
-  <a href="/clear">clear</a>
-  {% for userinput in data %}
-    <p>{{userinput}}</p>
-    {% endfor %}
+  </form>
+  <a href="/clear">clear</a> {% for userinput in data %}
+  <p>{{userinput}}</p>
+  {% endfor %}
 </body>
+
 </html>
