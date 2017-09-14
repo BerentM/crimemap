@@ -6,6 +6,7 @@ from flask import request
 app = Flask(__name__)
 DB = dbhelper()
 
+
 @app.route("/")
 def home():
     try:
@@ -13,7 +14,8 @@ def home():
     except Exception as e:
         print(e)
         data = None
-    return render_template("home.html", data = data)
+    return render_template("home.html", data=data)
+
 
 @app.route("/add", methods=["POST"])
 def add():
@@ -24,6 +26,7 @@ def add():
         print(e)
     return home()
 
+
 @app.route("/clear")
 def clear():
     try:
@@ -32,5 +35,6 @@ def clear():
         print(e)
     return home()
 
+
 if __name__ == '__main__':
-    app.run(port=8000, debug = True)
+    app.run(port=8000, debug=True)

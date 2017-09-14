@@ -16,15 +16,15 @@ class DBHelper():
             query = "SELECT description FROM crimes;"
             with connection.cursor() as cursor:
                 cursor.execute(query)
-            return cursor.fetchall()
+                return cursor.fetchall()
+        except Exception as e:
+            print(e)
 
     def add_input(self, data):
         connection = self.connect()
-        try:
-            query = "INSERT INTO crimes (description) VALUES ('{}');".format(
-                data)
-            with connection.cursor() as cursor:
-                cursor.execute(query)
+        query = "INSERT INTO crimes (description) VALUES ('{}');".format(data)
+        with connection.cursor() as cursor:
+            cursor.execute(query)
 
     def clear_all(self):
         connection = self.connect()
@@ -32,3 +32,5 @@ class DBHelper():
             query = "DELETE FROM crimes;"
             with connection.cursor() as cursor:
                 cursor.execute(query)
+        except Exception as e:
+            print(e)
