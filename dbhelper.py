@@ -12,9 +12,9 @@ class DBHelper():
         connection = self.connect()
         try:
             query = "SELECT description FROM crimes;"
-            with connection.cursor() as con:
-                con.execute(query)
-                return con.fetchall()
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+            return cursor.fetchall()
         finally:
             connection.close()
 
@@ -22,9 +22,9 @@ class DBHelper():
         connection = self.connect()
         try:
             query = "INSERT INTO crimes (description) VALUES ('{}');".format(data)
-            with connection.cursor() as con:
-                con.execute(query)
-            connection.commit()
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                connection.commit()
         finally:
             connection.close()
 
@@ -34,6 +34,6 @@ class DBHelper():
             query = "DELETE FROM crimes;"
             with connection.cursor() as cursor:
                 cursor.execute(query)
-            connection.commit()
+                connection.commit()
         finally:
             connection.close()
