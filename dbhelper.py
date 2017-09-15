@@ -6,7 +6,7 @@ class DBHelper():
     """docstring for DBHelper."""
 
     def connect(self, database="crimemap"):
-        return psycopg2.connect(host='localhost',
+        return psycopg2.connect(host='91.189.34.102',
                                 dbname=database, user=dbconfig.db_user,
                                 password=dbconfig.db_password)
 
@@ -22,7 +22,7 @@ class DBHelper():
 
     def add_input(self, data):
         connection = self.connect()
-        query = "INSERT INTO crimes (description) VALUES ('{}');".format(data)
+        query = "INSERT INTO crimes (description) VALUES (" + str(data)+");"
         with connection.cursor() as cursor:
             cursor.execute(query)
         connection.commit()
