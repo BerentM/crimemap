@@ -13,7 +13,7 @@ def home():
         data = DB.get_all_inputs()
     except Exception as e:
         print(e)
-        data = [1,2]
+        data = ["cos poszlo nie tak w funkcji home"]
     return render_template("home.html", data=data)
 
 
