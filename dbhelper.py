@@ -16,7 +16,7 @@ class DBHelper():
             query = "SELECT description FROM crimes;"
             with connection.cursor() as con:
                 con.execute(query)
-                return cursor.fetchall()
+                return con.fetchall()
         finally:
             connection.close()
 
