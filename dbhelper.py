@@ -6,7 +6,7 @@ class DBHelper():
     """docstring for DBHelper."""
 
     def connect(self, database="crimemap"):
-        return psycopg2.connect(host='91.189.34.102',
+        return psycopg2.connect(host='localhost',
                                 dbname=database, user=dbconfig.db_user,
                                 password=dbconfig.db_password)
 
@@ -16,7 +16,7 @@ class DBHelper():
             query = "SELECT description FROM crimes;"
             with connection.cursor() as con:
                 con.execute(query)
-                return con.fetchall()
+            return con.fetchall()
         finally:
             connection.close()
 
