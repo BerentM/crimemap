@@ -21,13 +21,9 @@ class DBHelper:
     def add_input(self, data):
         connection = self.connect()
         try:
-            query = "INSERT INTO crimes (description) VALUES (%s);"
+            query = "INSERT INTO crimes (description) VALUES ('{}');".format(data)
             with connection.cursor() as cursor:
-                cursor.execute(query, data)
-                connection.commit()
-        finally:
-            connection.close()
-
+                cursor.execute(query)
     def clear_all(self):
         connection = self.connect()
         try:
