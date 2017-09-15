@@ -22,11 +22,11 @@ class DBHelper():
 
     def add_input(self, data):
         connection = self.connect()
-        query = "INSERT INTO crimes (description) VALUES ("+data+");"
-        cursor = connection.cursor()
-        cursor.execute(query)
+        query = "INSERT INTO crimes (description) VALUES ('{}');".format(data)
+        with connection.cursor() as cursor:
+            cursor.execute(query)
         connection.commit()
-        # connection.close()
+        connection.close()
 
     def clear_all(self):
         connection = self.connect()
@@ -35,6 +35,6 @@ class DBHelper():
             with connection.cursor() as cursor:
                 cursor.execute(query)
             connection.commit()
-            # connection.close()
+            connection.close()
         except Exception as e:
             print(e)
