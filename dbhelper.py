@@ -2,7 +2,7 @@ import dbconfig
 import psycopg2
 
 
-class DBHelper():
+class DBHelper:
     """docstring for DBHelper."""
 
     def connect(self, database="crimemap"):
@@ -14,11 +14,11 @@ class DBHelper():
             query = "SELECT description FROM crimes;"
             with connection.cursor() as cursor:
                 cursor.execute(query)
-            return cursor.fetchall()
+                return cursor.fetchall()
         finally:
             connection.close()
 
-    def add_input(data):
+    def add_input(self, data):
         connection = self.connect()
         try:
             query = "INSERT INTO crimes (description) VALUES ('{}');".format(data)
