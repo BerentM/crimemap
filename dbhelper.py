@@ -16,15 +16,12 @@ class DBHelper():
             query = "SELECT description FROM crimes;"
             with connection.cursor() as con:
                 con.execute(query)
-                return cursor.fetchall()
+                return con.fetchall()
         finally:
             connection.close()
 
     def add_input(data):
-        connection = psycopg2.connect(host='91.189.34.102',
-                                dbname='crimemap', user=dbconfig.db_user,
-                                password=dbconfig.db_password)
-
+        connection = self.connect()
         try:
             query = "INSERT INTO crimes (description) VALUES ('{}');".format(data)
             with connection.cursor() as con:
