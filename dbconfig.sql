@@ -7,4 +7,5 @@
     description VARCHAR(1000),
     updated_at TIMESTAMP);
 
+insert into crimes(description) values ('dupa3');
 SELECT * FROM crimes;

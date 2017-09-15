@@ -25,6 +25,7 @@ class DBHelper():
         query = "INSERT INTO crimes (description) VALUES ("+data+");"
         with connection.cursor() as cursor:
             cursor.execute(query)
+        connection.commit()
         connection.close()
 
     def clear_all(self):
@@ -33,5 +34,7 @@ class DBHelper():
             query = "DELETE FROM crimes;"
             with connection.cursor() as cursor:
                 cursor.execute(query)
+            connection.commit()
+            connection.close()
         except Exception as e:
             print(e)
